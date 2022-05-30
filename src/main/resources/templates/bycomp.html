@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="http://localhost:8080/styles/css/style.css"/>
+  <title>Main page</title>
+</head>
+<body>
+<div>
+  <h3>
+    <form method="get" action="/">
+      <button type="submit">Main page</button>
+    </form>
+  </h3>
+</div>
+
+<h1>Company: </h1>
+<br>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Phone number</th>
+    <th>Web URL</th>
+  </tr>
+
+  <tr  th:each="comp : ${company}">
+    <td th:text="${comp.getName()}"></td>
+    <td th:text="${comp.getAddress()}">Name</td>
+    <td th:text="${comp.getPhoneNumber()}">Company</td>
+    <td th:text="${comp.getWeburl()}">Department</td>
+
+  </tr><br>
+</table>
+<h1>Company employees: </h1>
+<br>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Department</th>
+    <th>Salary</th>
+    <th>Sex</th>
+  </tr>
+
+  <tr  th:each="employee : ${employees}">
+    <td th:text="${employee.getId()}"></td>
+    <td th:text="${employee.getName()}">Name</td>
+    <td th:text="${employee.getDepartment()}">Department</td>
+    <td th:text="${employee.getSalary()}">Salary</td>
+    <td th:text="${employee.getSex()}">Sex</td>
+
+  </tr><br>
+</table>
+
+</body>
+</html>

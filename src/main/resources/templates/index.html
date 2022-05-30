@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/styles/css/style.css"/>
+    <title>Main page</title>
+</head>
+<body>
+<div>
+    <h3>
+    <form method="get" action="/">
+        <button type="submit">Main page</button>
+    </form>
+    </h3>
+</div>
+<h1>Hello, Guest!</h1>
+<br>
+<h2>What you want?</h2>
+<br>
+
+<table>
+    <tr>
+    <th>Operations with users</th>
+    <th>Operations with company</th>
+    </tr>
+
+    <tr>
+<td>
+    <form method="get" action="/allusers">
+        <button type="submit">Get all users</button>
+    </form>
+    <br>
+    <form>
+        <input name="id" th:value="${notfound}" required pattern="[0-9]{1,}">
+        <button type="submit" formmethod="get" formaction="/finduserbyid">Search user by id</button>
+    </form>
+    <br>
+
+    <form>
+        <button type="submit" formmethod="get" formaction="/generate">Generate more users!!!</button>
+    </form>
+    <p th:text="${status}"></p>
+
+</td>
+
+
+    <td>
+        <form>
+            <select name="comp" required>
+                <option th:each="item : ${list}" th:value="${item.getName()}" th:text="${item.getName()}"></option>
+            </select>
+            <button type="submit" formmethod="get" formaction="/bycomp">Search users by company</button>
+
+        </form>
+        <br>
+
+        <form>
+            <button type="submit" formmethod="get" formaction="/allcompany">Get list of company</button>
+        </form>
+        <br>
+
+
+    </td>
+    </tr>
+</table>
+<br><br><br>
+
+<table>
+    <tr><th colspan="2">Creation</th></tr>
+    <tr><th>User</th><th>Company</th></tr>
+    <tr>
+        <td>
+            <form>
+                <input name="name" placeholder="Enter the name" required min="2">
+                <br><br>
+                <select name="company" required>
+                    <option th:each="item : ${list}" th:value="${item.getName()}" th:text="${item.getName()}"></option>
+                </select>
+                <br><br>
+                <input name="department" placeholder="Enter the department" required min="2">
+                <br><br>
+                <input name="salary" placeholder="Enter the salary" required pattern="[0-9]{1,}">
+                <br><br>
+                <select name="sex" required>
+                    <option value="MALE">MALE</option>
+                    <option value="FEMALE">FEMALE</option>
+                </select>
+                <br><br><br>
+                <button type="submit" formmethod="post" formaction="/createuser">Create!</button>
+                <p th:text="${done}"></p>
+            </form>
+        </td>
+
+        <td>
+            <form>
+                <input name="name" placeholder="Enter the name" required min="2">
+                <br><br>
+                <input name="address" placeholder="Enter company address" required min="2">
+                <br><br>
+                <input name="phonenumber" placeholder="Enter the phone number" required pattern="[0-9]{1,32}">
+                <br><br>
+                <input name="weburl" placeholder="Enter the web URL" required min="5">
+
+                <br><br><br>
+                <button type="submit" formmethod="post" formaction="/createcompany">Create!</button>
+                <p th:text="${doneComp}"></p>
+            </form>
+        </td>
+    </tr>
+
+</table>
+<br><br>
+
+<table>
+    <tr><th colspan="2">Delete</th></tr>
+    <tr><th>User</th><th>Company</th></tr>
+    <tr>
+        <td>
+            <form>
+                <input name="id" placeholder="Enter the user id" required pattern="[0-9]{1,}">
+                <button type="submit" formmethod="post" formaction="/deleteuser">Delete!</button>
+            </form>
+            <p th:text="${delu}"></p>
+        </td>
+
+        <td>
+            <form>
+                <input name="comp" placeholder="Enter the company name" required>
+                <button type="submit" formmethod="post" formaction="/deletecompany">Delete!</button>
+            </form>
+            <p th:text="${delc}"></p>
+            <br>
+            <form>
+                <input name="comp" placeholder="Enter the company name" required>
+                <button type="submit" formmethod="post" formaction="/deleteallusers">Kill all employees!</button>
+            </form>
+            <p th:text="${killuser}"></p>
+        </td>
+
+
+    </tr>
+
+
+
+</table>
+
+</body>
+</html>

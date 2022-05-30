@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/styles/css/style.css"/>
+    <title>All users</title>
+
+</head>
+<body>
+<div>
+    <h3>
+        <form method="get" action="/">
+            <button type="submit">Main page</button>
+        </form>
+    </h3>
+</div>
+<h2>All company: </h2>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone number</th>
+        <th>Web URL</th>
+    </tr>
+
+    <tr  th:each="item : ${complist}">
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getAddress()}">Name</td>
+        <td th:text="${item.getPhoneNumber()}">Company</td>
+        <td th:text="${item.getWeburl()}">Department</td>
+
+    </tr><br>
+</table>
+
+</body>
+</html>

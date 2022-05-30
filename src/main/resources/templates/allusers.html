@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="http://localhost:8080/styles/css/style.css"/>
+    <title>All users</title>
+
+</head>
+<body>
+<div>
+    <h3>
+    <form method="get" action="/">
+        <button type="submit">Main page</button>
+    </form>
+    </h3>
+</div>
+<h2>All users: </h2>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Department</th>
+        <th>Salary</th>
+        <th>Sex</th>
+    </tr>
+
+    <tr  th:each="item : ${list}">
+        <td th:text="${item.getId()}"></td>
+        <td th:text="${item.getName()}">Name</td>
+        <td th:text="${item.getCompany()}">Company</td>
+        <td th:text="${item.getDepartment()}">Department</td>
+        <td th:text="${item.getSalary()}">Salary</td>
+        <td th:text="${item.getSex()}">Sex</td>
+
+    </tr><br>
+</table>
+
+</body>
+</html>
